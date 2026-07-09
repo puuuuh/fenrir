@@ -610,6 +610,20 @@ DEVICES = [
                 match_mode=MatchMode.ALL,
                 description='Don\'t enforce secure boot policy',
             ),
+            'sec_get_vfy_policy_inlined': PatchStage(
+                'sec_get_vfy_policy_inlined',
+                pattern='88 00 80 52 a0 73 00 91 a8 1f 00 b9 dd 44 ff 97',
+                replacement='68 00 80 52 a0 73 00 91 a8 1f 00 b9 00 00 80 52',
+                match_mode=MatchMode.ALL,
+                description='Don\'t enforce secure boot policy, inlined usage',
+            ),
+            'sec_get_vfy_policy_inlined2': PatchStage(
+                'sec_get_vfy_policy_inlined2',
+                pattern='88 00 80 52 a0 73 00 91 a8 1f 00 b9 db 45 ff 97',
+                replacement='68 00 80 52 a0 73 00 91 a8 1f 00 b9 00 00 80 52',
+                match_mode=MatchMode.ALL,
+                description='Don\'t enforce secure boot policy, second inlined usage',
+            ),
             'spoof_sboot_state': PatchStage(
                 'spoof_get_sboot_state',
                 pattern='fd 7b be a9 f3 0b 00 f9 fd 03 00 91 f3 03 00 aa 20 00 80 52 c4 ff ff 97',
@@ -638,13 +652,13 @@ DEVICES = [
                 match_mode=MatchMode.ALL,
                 description='Skip security error branch - always execute commands',
             ),
-            'spoof_seccfg_state': PatchStage(
-                'spoof_seccfg_state',
-                pattern='20 02 00 b4 fd 7b be a9 f3 0b 00 f9 fd 03 00 91',
-                replacement='88 00 80 52 08 00 00 b9 00 00 80 52 c0 03 5f d6',
-                match_mode=MatchMode.ALL,
-                description='Force seccfg state to always be LKS_LOCK',
-            ),
+            #'spoof_seccfg_state': PatchStage(
+            #    'spoof_seccfg_state',
+            #    pattern='20 02 00 b4 fd 7b be a9 f3 0b 00 f9 fd 03 00 91',
+            #    replacement='88 00 80 52 08 00 00 b9 00 00 80 52 c0 03 5f d6',
+            #    match_mode=MatchMode.ALL,
+            #    description='Force seccfg state to always be LKS_LOCK',
+            #),
             'spoof_get_lock_state1': PatchStage(
                 'spoof_get_lock_state1',
                 pattern='b4 53 3f 29 47 91 01 94 e0 00 00 34',
