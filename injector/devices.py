@@ -659,14 +659,6 @@ DEVICES = [
                 match_mode=MatchMode.ALL,
                 description='Ignore seccfg state in get_lock_state',
             ),
-
-            'spoof_vb_state': PatchStage(
-                'spoof_vb_state',
-                pattern='20 f7 ff b4 e8 73 43 39 e8 01 08 37 e8 03 18 2a 1f 13 00 71',
-                replacement='20 f7 ff b4 e8 73 43 39 1f 20 03 d5 e8 03 18 2a 1f 13 00 71',
-                match_mode=MatchMode.ALL,
-                description='Always do vbmeta verification and then discard any errors',
-            ),
         },
         cert_bypass=True
     ),
