@@ -631,6 +631,7 @@ DEVICES = [
                 match_mode=MatchMode.ALL,
                 description='Force sboot state to always be ATTR_SBOOT_ONLY_ENABLE_ON_SCHIP',
             ),
+
             'force_green_state': PatchStage(
                 'force_green_state',
                 pattern='c8 03 00 b0 00 81 0a b9 c0 03 5f d6',
@@ -642,6 +643,13 @@ DEVICES = [
                 'bypass_security_control',
                 pattern='05 ad 00 94 e8 0f 40 b9 68 00 00 34 68 17 40 b9 68 02 00 34',
                 replacement='05 ad 00 94 e8 0f 40 b9 0d 00 00 14 68 17 40 b9 68 02 00 34',
+                match_mode=MatchMode.ALL,
+                description='Skip security error branch - always execute commands',
+            ),
+            'bypass_security_control_305': PatchStage(
+                'bypass_security_control_305',
+                pattern='f3 ac 00 94 e8 0f 40 b9 68 00 00 34 68 17 40 b9 68 02 00 34',
+                replacement='f3 ac 00 94 e8 0f 40 b9 0d 00 00 14 68 17 40 b9 68 02 00 34',
                 match_mode=MatchMode.ALL,
                 description='Skip security error branch - always execute commands',
             ),
